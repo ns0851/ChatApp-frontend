@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.stroked-text {
+  color: white;
+  -webkit-text-stroke: 0.3px black;
+  text-stroke: 0.3px black; /* For compatibility */
+}
+
+
+/* Right Side: Art Container */
+.left-container {
+    /* background-color: #1d232a; */
+    /* background: linear-gradient(to right, #0e1114, #1f262e); */
+}
+
+.art-container {
+  flex: 1;
+  position: relative;
+  /* background: linear-gradient(to right, #1f262e, #445f7e); */
+  overflow: hidden;
+}
+
+/* Chat Bubbles */
+.bubble {
+  position: absolute;
+  background-color: white;
+  color: #007bff;
+  font-size: 18px;
+  padding: 12px 20px;
+  border-radius: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  animation: float 6s infinite ease-in-out;
+  white-space: nowrap;
+}
+
+.right-text{
+  animation: float 6s infinite ease-in-out;
+}
+
+.text{
+  animation-delay: 1s;
+}
+
+.bubble-1 {
+  top: 5%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.bubble-2 {
+  top: 20%;
+  right: 30%;
+  animation-delay: 1s;
+}
+
+.bubble-3 {
+  top: 35%;
+  left: 3%;
+  animation-delay: 2s;
+}
+
+.bubble-4 {
+  bottom: 45%;
+  right: 15%;
+  animation-delay: 3s;
+}
+
+.bubble-5 {
+  top: 30%;
+  right: 5%;
+  animation-delay: 4s;
+}
+
+.bubble-6 {
+  bottom: 12%;
+  right: 20%;
+  animation-delay: 5s;
+}
+
+.bubble-7 {
+  top: 70%;
+  left: 20%;
+  animation-delay: 6s;
+}
+
+.bubble-8 {
+  bottom: 5%;
+  left: 0%;
+  animation-delay: 7s;
+}
+
+
+
+/* Floating Animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

@@ -1,0 +1,106 @@
+import React from "react";
+import { useThemeStore } from "../store/useThemeStore";
+import { THEMES } from "../constants/index";
+import { Send } from "lucide-react";
+
+const PREVIEW_MESSAGES = [
+  { id: 1, content: "Hey! How's it going?", isSent: false },
+  { id: 2, content: "I'm doing great! Just working on some new features.", isSent: true },
+  { id: 3, content: "Wow! that's great", isSent: false },
+  { id: 4, content: "ikr", isSent: true },
+  { id: 5, content: "So many themes to choose from", isSent: false },
+  { id: 6, content: "Yas! pick whatever you like", isSent: true },
+];
+
+const Settings = () => {
+  const { theme, setTheme } = useThemeStore();
+
+  return (
+    <div className="flex justify-center items-start gap-5 px-6 transition-all h-[100vh]">
+      <div className="preview min-h-full w-[60vh] p-6 my-4">
+         {/* Preview Section */}
+         <h3 className="text-lg font-semibold mb-3">Preview</h3>
+        <div className="rounded-xl border border-base-300 bg-base-100 shadow-lg">
+          <div className="p-4 bg-base-200">
+            <div className="max-w-lg mx-auto">
+              {/* Mock Chat UI */}
+              <div className="bg-base-100 rounded-xl shadow-sm">
+                {/* Chat Header */}
+                <div className="px-4 py-3 border-b border-base-300 bg-base-100">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-content font-medium">
+                      J
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-sm">Satya Dev</h3>
+                      <p className="text-xs text-base-content/70">Online</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Chat Messages */}
+                <div className="p-4 space-y-4 max-h-[700px] bg-base-100">
+                  {PREVIEW_MESSAGES.map((message) => (
+                    <div
+                      key={message.id}
+                      className={`flex ${message.isSent ? "justify-end" : "justify-start"}`}
+                    >
+                      <div
+                        className={`
+                          max-w-[80%] rounded-xl p-3 shadow-sm
+                          ${message.isSent ? "bg-primary text-primary-content" : "bg-base-200"}
+                        `}
+                      >
+                        <p className="text-sm">{message.content}</p>
+                        <p
+                          className={`
+                            text-[10px] mt-1.5
+                            ${message.isSent ? "text-primary-content/70" : "text-base-content/70"}
+                          `}
+                        >
+                          12:00 PM
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Chat Input */}
+                <div className="p-4 border-t border-base-300 bg-base-100">
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      className="input input-bordered flex-1 text-sm h-10"
+                      placeholder="Type a message..."
+                      value="This is a preview"
+                      readOnly
+                    />
+                    <button className="btn btn-primary h-10 min-h-0">
+                      <Send size={18} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="themes stroked-text text-xl flex flex-col gap-3 p-4 font-bold text-secondary">
+        {THEMES.map((t) => (
+          <button
+            key={t}
+            data-theme={t}
+            className={`bg-primary rounded-md transition-all h-10 w-32 text-center truncate ${
+              theme === t ? "bg-base-200" : "hover:bg-base-200/50"
+            }`}
+            onClick={() => setTheme(t)}
+          >
+            {t}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Settings;
